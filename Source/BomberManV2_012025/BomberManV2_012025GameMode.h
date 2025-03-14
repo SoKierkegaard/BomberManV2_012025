@@ -20,7 +20,6 @@ private:
 
     // Función para generar y destruir bloques
     void SpawnAndDestroyBlock();
-    void SpawnBloque();
 };
 
 

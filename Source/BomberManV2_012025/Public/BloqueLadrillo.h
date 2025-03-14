@@ -4,17 +4,18 @@
 
 #include "CoreMinimal.h"
 #include "GameFramework/Actor.h"
-#include "BloqueAcero.generated.h"
+#include "BloqueLadrillo.generated.h"
 
 UCLASS()
-class BOMBERMANV2_012025_API ABloqueAcero : public AActor
+class BOMBERMANV2_012025_API ABloqueLadrillo : public AActor
 {
 	GENERATED_BODY()
 
 public:
 	// Sets default values for this actor's properties
-	ABloqueAcero();
-	UStaticMeshComponent* MallaBloqueAcero;
+	ABloqueLadrillo();
+	UStaticMeshComponent* MallaBloqueLadrillo;
+
 protected:
 	// Called when the game starts or when spawned
 	virtual void BeginPlay() override;
@@ -27,9 +28,4 @@ private:
 	FRotator StartRotation;
 	FVector StartLocation;
 
-	UPROPERTY(VisibleAnywhere)
-	UStaticMeshComponent* MallaBloqueAcero;
-
-	UPROPERTY(EditAnywhere, Category = "Configuracion")
-	FVector EscalaBloque;
 };

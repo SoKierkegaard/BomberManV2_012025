@@ -10,23 +10,21 @@ UCLASS()
 class BOMBERMANV2_012025_API ABloqueMadera : public AActor
 {
 	GENERATED_BODY()
-	
-public:	
+
+public:
 	// Sets default values for this actor's properties
 	ABloqueMadera();
-		UStaticMeshComponent* MallaBloqueMadera;
+	UStaticMeshComponent* MallaBloqueMadera;
 
 protected:
 	// Called when the game starts or when spawned
 	virtual void BeginPlay() override;
 
-public:	
+public:
 	// Called every frame
 	virtual void Tick(float DeltaTime) override;
 private:
 	float RotationSpeed;
 	FRotator StartRotation;
 	FVector StartLocation;
-
-
 };

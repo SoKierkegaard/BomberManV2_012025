@@ -4,7 +4,7 @@
 #include "BomberManV2_012025Character.h"
 #include "UObject/ConstructorHelpers.h"
 #include "BloqueMadera.h"
-#include "BloqueAcero.h"
+#include "BloqueLadrillo.h"
 #include "Kismet/KismetMathLibrary.h"
 
 ABomberManV2_012025GameMode::ABomberManV2_012025GameMode()
@@ -20,9 +20,13 @@ ABomberManV2_012025GameMode::ABomberManV2_012025GameMode()
 void ABomberManV2_012025GameMode::BeginPlay()
 {
     Super::BeginPlay();
-    SpawnBloque();
-    // Configura un timer para llamar a la función periódicamente
     GetWorldTimerManager().SetTimer(BloqueTimerHandle,this,&ABomberManV2_012025GameMode::SpawnAndDestroyBlock,15.0f,true);
+
+    for (int i = 0; i < 10; i++)
+    {
+        ABloqueLadrillo* bloqueladrillo01 = GetWorld()->SpawnActor<ABloqueLadrillo>(ABloqueLadrillo::StaticClass(), FVector(500.0f + i * 150, 300.0f, 100.0f), FRotator(0.0f, 0.0f, 0.0f));
+
+    }
 
     GEngine->AddOnScreenDebugMessage(-1, -1, FColor::Red, TEXT("Generando Troncos"));
 
@@ -71,15 +75,4 @@ void ABomberManV2_012025GameMode::SpawnAndDestroyBlock()
         }
     }
 
-}
-
-void ABomberManV2_012025GameMode::SpawnBloque()
-{
-    if (UWorld* World = GetWorld()) {
-        FVector SpawnLocation = FVector(0, 0, 0);
-        FRotator SpawnRotation = FRotator::ZeroRotator;
-
-        ABloqueAcero* NuevoBloque = World->SpawnActor<ABloqueAcero>(ABloqueAcero::StaticClass(), SpawnLocation, SpawnRotation);
-
-    }
 }

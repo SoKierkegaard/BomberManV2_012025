@@ -6,8 +6,10 @@
 // Sets default values
 ABloqueMadera::ABloqueMadera()
 {
-    // Set this actor to call Tick() every frame.  You can turn this off to improve performance if you don't need it.
     PrimaryActorTick.bCanEverTick = true;
+
+    // Definir un RootComponent explícito
+    RootComponent = CreateDefaultSubobject<USceneComponent>(TEXT("RootComponent"));
 
     MallaBloqueMadera = CreateDefaultSubobject<UStaticMeshComponent>(TEXT("MallaBloqueMadera"));
     MallaBloqueMadera->SetupAttachment(RootComponent);
@@ -20,6 +22,7 @@ ABloqueMadera::ABloqueMadera()
         MallaBloqueMadera->SetRelativeLocation(FVector(0.0f, 0.0f, 0.0f));
     }
 }
+
 
 // Called when the game starts or when spawned
 void ABloqueMadera::BeginPlay()
